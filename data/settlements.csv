@@ -1,0 +1,6 @@
+settlement_id,settlement_date,amount,merchant,reference
+S001,2026-08-20,2500.00,Amazon,REF1001
+S002,2026-08-20,1200.00,Flipkart,REF1002
+S003,2026-08-22,750.00,Zomato,REF1003
+S004,2026-08-21,3200.00,Myntra,REF1004
+S005,2026-08-22,1550.00,Swiggy,REF1005
