@@ -11,8 +11,10 @@ settlement_data = pd.read_csv("data/settlements.csv")
 
 reconciled_data = bank_data.merge(
     settlement_data,
-    on="reference"
+    on="reference",
+    how="left"
 )
+print(reconciled_data["settlement_id"].isna())
 
 print(reconciled_data)
 print(reconciled_data["amount_x"] == reconciled_data["amount_y"])
@@ -44,6 +46,10 @@ print(
 )
 
 reconciled_data["exception_type"] = "MATCH"
+reconciled_data.loc[
+    reconciled_data["settlement_id"].isna(),
+    "exception_type"
+] = "MISSING_SETTLEMENT"
 
 reconciled_data.loc[
     (~reconciled_data["amount_status"]) &
@@ -74,3 +80,38 @@ match_rate = (match_count / total_count) * 100
 print("Match count:", match_count)
 print("Total records:", total_count)
 print("Match rate:", match_rate, "%")
+
+missing_bank = settlement_data.merge(
+    bank_data,
+    on="reference",
+    how="left",
+    indicator=True
+)
+
+missing_bank = missing_bank[missing_bank["_merge"] == "left_only"]
+
+print("Missing bank transactions:")
+print(missing_bank)
+
+exceptions = reconciled_data[
+    reconciled_data["exception_type"] != "MATCH"
+]
+
+print("Exceptions:")
+print(
+    exceptions[
+        [
+            "reference",
+            "amount_x",
+            "amount_y",
+            "transaction_date",
+            "settlement_date",
+            "exception_type"
+        ]
+    ]
+)
+print("Exception counts:")
+print(reconciled_data["exception_type"].value_counts())
+exceptions.to_csv("data/exceptions.csv", index=False)
+
+print("Exception report saved.")

@@ -1,0 +1,3 @@
+transaction_id,transaction_date,amount_x,merchant_x,reference,settlement_id,settlement_date,amount_y,merchant_y,amount_status,date_status,reconciliation_status,exception_type
+B003,2026-08-21,750.0,Zomato,REF1003,S003,2026-08-22,750.0,Zomato,True,False,False,DATE_MISMATCH
+B005,2026-08-22,1500.0,Swiggy,REF1005,,,,,False,False,False,MISSING_SETTLEMENT
