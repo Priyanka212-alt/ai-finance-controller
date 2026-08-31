@@ -1,5 +1,7 @@
 import pandas as pd
+import time
 
+start_time = time.time()
 
 # Load data
 bank_data = pd.read_csv("data/bank_transactions.csv")
@@ -163,8 +165,17 @@ print("Expected cash:", round(expected_total, 2))
 print("Actual settled cash:", round(actual_total, 2))
 print("Cash difference:", round(cash_difference, 2))
 
-# print("\nEXCEPTIONS")
-# print("----------")
+end_time = time.time()
+
+processing_time = end_time - start_time
+
+records_per_second = total_count / processing_time
+
+print("\nPROCESSING PERFORMANCE")
+print("----------------------")
+print("Records processed:", total_count)
+print("Processing time:", round(processing_time, 4), "seconds")
+print("Records per second:", round(records_per_second, 2))
 
 # Recommended action for each exception
 
