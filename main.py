@@ -182,6 +182,23 @@ print("Records per second:", round(records_per_second, 2))
 exceptions["recommended_action"] = ""
 exceptions["priority"] = ""
 
+exceptions["risk_score"] = 0
+
+exceptions.loc[
+    exceptions["exception_type"] == "AMOUNT_MISMATCH",
+    "risk_score"
+] = 80
+
+exceptions.loc[
+    exceptions["exception_type"] == "DATE_MISMATCH",
+    "risk_score"
+] = 50
+
+exceptions.loc[
+    exceptions["exception_type"] == "MISSING_SETTLEMENT",
+    "risk_score"
+] = 100
+
 exceptions.loc[
     exceptions["exception_type"] == "MISSING_SETTLEMENT",
     "priority"
@@ -232,8 +249,8 @@ else:
                 "settlement_date",
                 "exception_type",
                 "recommended_action",
-                "priority"
-
+                "priority",
+                "risk_score"
             ]
         ]
     )
