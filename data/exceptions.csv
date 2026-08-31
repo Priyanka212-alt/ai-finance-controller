@@ -1,11 +1,11 @@
-transaction_id,transaction_date,amount_x,merchant_x,reference,settlement_id,settlement_date,amount_y,merchant_y,amount_status,date_status,reconciliation_status,exception_type
-B010,2026-08-10,1500,Uber,REF1010,S010,2026-08-10,1550.0,Uber,False,True,False,AMOUNT_MISMATCH
-B015,2026-08-15,2000,Zomato,REF1015,S015,2026-08-25,2000.0,Zomato,True,False,False,DATE_MISMATCH
-B020,2026-08-20,2500,Uber,REF1020,S020,2026-08-20,2600.0,Uber,False,True,False,AMOUNT_MISMATCH
-B025,2026-08-05,3000,Zomato,REF1025,S025,2026-08-26,3000.0,Zomato,True,False,False,DATE_MISMATCH
-B030,2026-08-10,3500,Uber,REF1030,S030,2026-08-10,3575.0,Uber,False,True,False,AMOUNT_MISMATCH
-B035,2026-08-15,4000,Zomato,REF1035,S035,2026-08-27,4000.0,Zomato,True,False,False,DATE_MISMATCH
-B040,2026-08-20,4500,Uber,REF1040,S040,2026-08-20,4625.0,Uber,False,True,False,AMOUNT_MISMATCH
-B045,2026-08-05,5000,Zomato,REF1045,S045,2026-08-28,5000.0,Zomato,True,False,False,DATE_MISMATCH
-B050,2026-08-10,5500,Uber,REF1050,S050,2026-08-10,5700.0,Uber,False,True,False,AMOUNT_MISMATCH
-B055,2026-08-15,6000,Zomato,REF1055,,,,,False,False,False,MISSING_SETTLEMENT
+transaction_id,transaction_date,amount_x,merchant_x,reference,settlement_id,settlement_date,amount_y,merchant_y,amount_status,date_status,reconciliation_status,exception_type,recommended_action
+B010,2026-08-10,1500,Uber,REF1010,S010,2026-08-10,1550.0,Uber,False,True,False,AMOUNT_MISMATCH,Review settlement amount
+B015,2026-08-15,2000,Zomato,REF1015,S015,2026-08-25,2000.0,Zomato,True,False,False,DATE_MISMATCH,Investigate settlement timing
+B020,2026-08-20,2500,Uber,REF1020,S020,2026-08-20,2600.0,Uber,False,True,False,AMOUNT_MISMATCH,Review settlement amount
+B025,2026-08-05,3000,Zomato,REF1025,S025,2026-08-26,3000.0,Zomato,True,False,False,DATE_MISMATCH,Investigate settlement timing
+B030,2026-08-10,3500,Uber,REF1030,S030,2026-08-10,3575.0,Uber,False,True,False,AMOUNT_MISMATCH,Review settlement amount
+B035,2026-08-15,4000,Zomato,REF1035,S035,2026-08-27,4000.0,Zomato,True,False,False,DATE_MISMATCH,Investigate settlement timing
+B040,2026-08-20,4500,Uber,REF1040,S040,2026-08-20,4625.0,Uber,False,True,False,AMOUNT_MISMATCH,Review settlement amount
+B045,2026-08-05,5000,Zomato,REF1045,S045,2026-08-28,5000.0,Zomato,True,False,False,DATE_MISMATCH,Investigate settlement timing
+B050,2026-08-10,5500,Uber,REF1050,S050,2026-08-10,5700.0,Uber,False,True,False,AMOUNT_MISMATCH,Review settlement amount
+B055,2026-08-15,6000,Zomato,REF1055,,,,,False,False,False,MISSING_SETTLEMENT,Follow up with payment processor

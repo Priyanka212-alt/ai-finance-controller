@@ -163,12 +163,38 @@ print("Expected cash:", round(expected_total, 2))
 print("Actual settled cash:", round(actual_total, 2))
 print("Cash difference:", round(cash_difference, 2))
 
+# print("\nEXCEPTIONS")
+# print("----------")
+
+# Recommended action for each exception
+
+exceptions["recommended_action"] = ""
+
+exceptions.loc[
+    exceptions["exception_type"] == "AMOUNT_MISMATCH",
+    "recommended_action"
+] = "Review settlement amount"
+
+exceptions.loc[
+    exceptions["exception_type"] == "DATE_MISMATCH",
+    "recommended_action"
+] = "Investigate settlement timing"
+
+exceptions.loc[
+    exceptions["exception_type"] == "MISSING_SETTLEMENT",
+    "recommended_action"
+] = "Follow up with payment processor"
+
+
 print("\nEXCEPTIONS")
 print("----------")
 
 if exceptions.empty:
+
     print("No exceptions found.")
+
 else:
+
     print(
         exceptions[
             [
@@ -177,9 +203,19 @@ else:
                 "amount_y",
                 "transaction_date",
                 "settlement_date",
-                "exception_type"
+                "exception_type",
+                "recommended_action"
             ]
         ]
     )
 
+
+exceptions.to_csv(
+    "data/exceptions.csv",
+    index=False
+)
+
 print("\nException report saved to data/exceptions.csv")
+
+
+
