@@ -238,6 +238,10 @@ if exceptions.empty:
     print("No exceptions found.")
 
 else:
+    exceptions = exceptions.sort_values(
+    by="risk_score",
+    ascending=False
+    )
 
     print(
         exceptions[
