@@ -267,5 +267,69 @@ exceptions.to_csv(
 
 print("\nException report saved to data/exceptions.csv")
 
+print("\nFINANCE CONTROLLER INSIGHTS")
+print("---------------------------")
+
+if exception_count == 0:
+    print("No financial exceptions detected.")
+else:
+    highest_risk = exceptions.iloc[0]
+
+    print("Highest risk exception:", highest_risk["reference"])
+    print("Highest risk score:", highest_risk["risk_score"])
+    print("Recommended action:", highest_risk["recommended_action"])
+
+    print("\nManagement attention required:")
+    
+    if cash_difference > 0:
+        print(
+            "Expected cash is higher than settled cash by ₹",
+            round(cash_difference, 2)
+        )
+
+    if missing_settlement_amount > 0:
+        print(
+            "₹",
+            round(missing_settlement_amount, 2),
+            "is tied to missing settlements."
+        )
+
+    if amount_exceptions["amount_difference"].sum() != 0:
+        print(
+            "₹",
+            round(amount_exceptions["amount_difference"].sum(), 2),
+            "difference exists across amount mismatches."
+        )
+print("\nAI FINANCE CONTROLLER DECISION")
+print("------------------------------")
+
+if cash_difference > 0:
+    print("Overall status: CASH SHORTFALL DETECTED")
+else:
+    print("Overall status: CASH POSITION BALANCED")
+
+if highest_risk["risk_score"] >= 80:
+    print("Urgency: HIGH")
+elif highest_risk["risk_score"] >= 50:
+    print("Urgency: MEDIUM")
+else:
+    print("Urgency: LOW")
+
+print("Primary issue:", highest_risk["exception_type"])
+
+if missing_settlement_amount > 0:
+    print(
+        "Priority recommendation: Resolve missing settlements totaling ₹",
+        round(missing_settlement_amount, 2)
+    )
+elif total_amount_difference != 0:
+    print(
+        "Priority recommendation: Review settlement amount differences totaling ₹",
+        round(abs(total_amount_difference), 2)
+    )
+else:
+    print("Priority recommendation: Investigate settlement timing.")
+
+print("Controller decision: Manual review required.")
 
 
