@@ -1,0 +1,37 @@
+
+AI FINANCE CONTROLLER - MANAGEMENT REPORT
+=========================================
+
+RECONCILIATION
+--------------
+Total records: 60
+Matched records: 50
+Exceptions: 10
+Match rate: 83.33%
+
+EXCEPTION BREAKDOWN
+-------------------
+Amount mismatches: 5
+Date mismatches: 4
+Missing settlements: 1
+
+FINANCIAL IMPACT
+----------------
+Expected cash: ₹213000.00
+Actual settled cash: ₹207550.00
+Cash difference: ₹5450.00
+Amount mismatch difference: ₹550.00
+Missing settlement amount: ₹6000.00
+
+RISK
+----
+Highest risk exception: REF1055
+Risk score: 100
+Priority: HIGH
+Recommended action: Follow up with payment processor
+
+CONTROLLER DECISION
+-------------------
+Overall status: CASH SHORTFALL DETECTED
+Urgency: HIGH
+Manual review required.

@@ -332,4 +332,50 @@ else:
 
 print("Controller decision: Manual review required.")
 
+# Management report
+
+report = f"""
+AI FINANCE CONTROLLER - MANAGEMENT REPORT
+=========================================
+
+RECONCILIATION
+--------------
+Total records: {total_count}
+Matched records: {match_count}
+Exceptions: {exception_count}
+Match rate: {match_rate:.2f}%
+
+EXCEPTION BREAKDOWN
+-------------------
+Amount mismatches: {exception_counts.get("AMOUNT_MISMATCH", 0)}
+Date mismatches: {exception_counts.get("DATE_MISMATCH", 0)}
+Missing settlements: {exception_counts.get("MISSING_SETTLEMENT", 0)}
+
+FINANCIAL IMPACT
+----------------
+Expected cash: ₹{expected_total:.2f}
+Actual settled cash: ₹{actual_total:.2f}
+Cash difference: ₹{cash_difference:.2f}
+Amount mismatch difference: ₹{total_amount_difference:.2f}
+Missing settlement amount: ₹{missing_settlement_amount:.2f}
+
+RISK
+----
+Highest risk exception: {highest_risk["reference"]}
+Risk score: {highest_risk["risk_score"]}
+Priority: {highest_risk["priority"]}
+Recommended action: {highest_risk["recommended_action"]}
+
+CONTROLLER DECISION
+-------------------
+Overall status: CASH SHORTFALL DETECTED
+Urgency: HIGH
+Manual review required.
+"""
+
+with open("data/management_report.txt", "w", encoding="utf-8") as file:
+    file.write(report)
+
+print("\nManagement report saved to data/management_report.txt")
+
 
